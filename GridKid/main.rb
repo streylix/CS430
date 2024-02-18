@@ -103,7 +103,7 @@ IntPrimitive.new(12))
 
 result = expression.traverse(evaluator, runtime)
 
-puts "1. Result: #{result.value}, Works? #{Evaluator.new.visit_equals(Equals.new(result, IntPrimitive.new(7)), runtime)}\n"
+puts "1. Result: #{result.value}, Works? #{Evaluator.new.visit_equals(Equals.new(result, IntPrimitive.new(7)), runtime).value}\n"
 
 runtime.grid.set_cell([1, 1], IntPrimitive.new(4))
 runtime.grid.set_cell([0, 0], IntPrimitive.new(1))
@@ -129,7 +129,7 @@ if comparison_expression.traverse(evaluator, runtime)
 end
 
 logic_expression = Not.new(GreaterThan.new(FloatPrimitive.new(3.3), FloatPrimitive.new(3.2)))
-if (logic_expression.traverse(evaluator, runtime).value) == false
+if Equals.new(logic_expression.traverse(evaluator, runtime).value, BoolPrimitive.new(false)) # if logic_expression.traverse(evaluator, runtime).value == false 
     puts "4. !(3.3 > 3.2) was false, Logic and comparison was a success!\n"
 end
 

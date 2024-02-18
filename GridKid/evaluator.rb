@@ -235,27 +235,27 @@ class Evaluator
     end
 
     def visit_equals(node, runtime)
-        node.left.traverse(self, runtime).value == node.right.traverse(self, runtime).value
+        BoolPrimitive.new(node.left.traverse(self, runtime).value == node.right.traverse(self, runtime).value)
     end
 
     def visit_not_equals(node, runtime)
-        node.left.traverse(self, runtime).value != node.right.traverse(self, runtime).value
+        BoolPrimitive.new(node.left.traverse(self, runtime).value != node.right.traverse(self, runtime).value)
     end
 
     def visit_less_than(node, runtime)
-        node.left.traverse(self, runtime).value < node.right.traverse(self, runtime).value
+        BoolPrimitive.new(node.left.traverse(self, runtime).value < node.right.traverse(self, runtime).value)
     end
 
     def visit_less_than_equal(node, runtime)
-        node.left.traverse(self, runtime).value <= node.right.traverse(self, runtime).value
+        BoolPrimitive.new(node.left.traverse(self, runtime).value <= node.right.traverse(self, runtime).value)
     end
 
     def visit_greater_than(node, runtime)
-        node.left.traverse(self, runtime).value > node.right.traverse(self, runtime).value
+        BoolPrimitive.new(node.left.traverse(self, runtime).value > node.right.traverse(self, runtime).value)
     end
 
     def visit_greater_than_equal(node, runtime)
-        node.left.traverse(self, runtime).value >= node.right.traverse(self, runtime).value
+        BoolPrimitive.new(node.left.traverse(self, runtime).value >= node.right.traverse(self, runtime).value)
     end
 
     def visit_float_to_int(node, runtime)
