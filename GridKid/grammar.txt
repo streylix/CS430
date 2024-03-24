@@ -1,0 +1,18 @@
+expression ::= logical_expression
+logical_expression ::= relational_expression { ("AND" | "OR") relational_expression }
+relational_expression ::= addition_expression { ("==" | "!=" | "<" | "<=" | ">" | ">=") addition_expression }
+addition_expression ::= multiplication_expression { ("+" | "-") multiplication_expression }
+multiplication_expression ::= exponentiation_expression { ("*" | "/" | "%") exponentiation_expression }
+exponentiation_expression ::= unary_expression { "^" unary_expression }
+unary_expression ::= ("NOT" | "BITWISE_NOT" ...) unary_expression | primitive
+primitive ::= integer | float | boolean | string | cell_value | "(" expression ")" | function_call
+integer ::= digit { digit }
+float ::= digit { digit } "." { digit }
+boolean ::= "TRUE" | "FALSE"
+string ::= "\"" { any_character } "\""
+cell_value ::= cell_lvalue | cell_rvalue
+cell_lvalue ::= "L[" letter { letter | digit } "]"
+cell_rvalue ::= "R[" letter { letter | digit } "]"
+bitwise_operation ::= primitive { ("BITWISE_AND" | "BITWISE_OR" | "BITWISE_XOR" | "LEFT_SHIFT" | "RIGHT_SHIFT") primitive }
+function_call ::= "MAX(" expression_list ")" | "MIN(" expression_list ")" | "MEAN(" expression_list ")" | "SUM(" expression_list ")"
+expression_list ::= expression { "," expression }

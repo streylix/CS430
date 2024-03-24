@@ -1,3 +1,5 @@
+require_relative "expression.rb"
+
 class IntPrimitive < Expression
     attr_reader :value
 

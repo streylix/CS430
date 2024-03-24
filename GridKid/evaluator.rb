@@ -159,7 +159,8 @@ class Evaluator
     end
 
     def visit_not(node, runtime)
-        BoolPrimitive.new(!(node.value))
+        value = node.value.traverse(self, runtime).value
+        BoolPrimitive.new(!value)
     end
 
     def visit_cell_l(node, runtime)

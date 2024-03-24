@@ -26,6 +26,10 @@ class Serializer
 
 
     #arithmetic operators
+    def visit_set(node, runtime)
+        "#{node.each {|n|}}"
+    end
+
     def visit_add(node, runtime)
         "(#{node.left.traverse(self, runtime)} + #{node.right.traverse(self, runtime)})"
     end

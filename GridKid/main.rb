@@ -7,7 +7,6 @@ require_relative "primitives"
 require_relative "runtime"
 require_relative "serializer"
 
-
 #initialize
 runtime = Runtime.new
 evaluator = Evaluator.new
